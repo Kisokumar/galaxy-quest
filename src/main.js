@@ -11,10 +11,11 @@ var config = {
     default: "arcade",
     arcade: {
       gravity: { y: 0, x: 0 },
-      debug: false,
+      debug: true,
     },
   },
-  scene: [MainMenu, Freeplay],
+  // scene: [MainMenu, Freeplay],
+  scene: [Freeplay],
   // scene: [MainMenu, GameOver,SinglePlayer, TwoPlayer],
   scale: {
     mode: Phaser.Scale.FIT,
