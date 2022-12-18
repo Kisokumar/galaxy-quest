@@ -35,6 +35,8 @@ export default class GameOver extends Phaser.Scene {
       "Play Again",
       this,
       () => {
+        this.scene.stop("GameOver");
+        this.scene.stop("SinglePlayer");
         this.scene.start("SinglePlayer");
       },
       3
@@ -45,6 +47,8 @@ export default class GameOver extends Phaser.Scene {
       "Main Menu",
       this,
       () => {
+        this.scene.stop("GameOver");
+        this.scene.stop("SinglePlayer");
         this.scene.start("MainMenu");
       },
       3
@@ -59,11 +63,15 @@ export default class GameOver extends Phaser.Scene {
     this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
 
     this.text = this.add.text(
-      screenCenterX + 160,
+      screenCenterX + 178,
       screenCenterY + 130,
-      "X on controller",
+      "on controller",
       { font: "15px Audiowide" }
     );
+    this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
+    this.text = this.add.text(screenCenterX + 160, screenCenterY + 125, "□ ", {
+      font: "25px Audiowide",
+    });
     this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
 
     this.text = this.add.text(
@@ -90,7 +98,7 @@ export default class GameOver extends Phaser.Scene {
         this.scene.stop("SinglePlayer");
         this.scene.start("SinglePlayer");
       }
-      if (this.gamepad.A) {
+      if (this.gamepad.X) {
         this.scene.stop("GameOver");
         this.scene.stop("SinglePlayer");
         this.scene.start("MainMenu");
