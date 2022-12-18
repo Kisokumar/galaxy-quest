@@ -35,7 +35,7 @@ export default class MainMenu extends Phaser.Scene {
       "Single Player",
       this,
       () => {
-        // this.scene.start("SinglePlayer");
+        this.scene.start("SinglePlayer");
       },
       3
     );
@@ -59,13 +59,6 @@ export default class MainMenu extends Phaser.Scene {
     );
     this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
     this.text = this.add.text(
-      screenCenterX - 480,
-      screenCenterY + 130,
-      "Coming soon. . .",
-      { font: "15px Audiowide" }
-    );
-    this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
-    this.text = this.add.text(
       screenCenterX - 120,
       screenCenterY - 460,
       "Better with controller!",
@@ -79,7 +72,7 @@ export default class MainMenu extends Phaser.Scene {
       "Freeplay",
       this,
       () => {
-        this.scene.start("Freeplay");
+        // this.scene.start("Freeplay");
       },
       3
     );
