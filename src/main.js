@@ -2,7 +2,6 @@ import Phaser, { Game } from "phaser";
 import MainMenu from "./scenes/MainMenu";
 import SinglePlayer from "./scenes/SinglePlayer";
 import GameOver from "./scenes/GameOver";
-import Paused from "./scenes/Paused";
 
 const width = 1920;
 const height = 1070;
@@ -21,7 +20,7 @@ var config = {
     },
   },
   // scene: [GameOver, SinglePlayer, MainMenu],
-  scene: [MainMenu, Paused, SinglePlayer, GameOver],
+  scene: [MainMenu, SinglePlayer, GameOver],
   // scene: [SinglePlayer],
   // scene: [MainMenu, GameOver, FreePlay, SinglePlayer, TwoPlayer],
   scale: {

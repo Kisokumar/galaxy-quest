@@ -11,6 +11,7 @@ export default class MainMenu extends Phaser.Scene {
     this.load.image("background", "bg.jpeg");
   }
   create() {
+    window.localStorage.setItem("mute", false);
     const screenCenterX =
       this.cameras.main.worldView.x + this.cameras.main.width / 2;
     const screenCenterY =
@@ -49,6 +50,16 @@ export default class MainMenu extends Phaser.Scene {
       },
       3
     );
+    this.freeplayButton = new Button(
+      screenCenterX,
+      screenCenterY + 300,
+      "Freeplay",
+      this,
+      () => {
+        // this.scene.start("Freeplay");
+      },
+      3
+    );
 
     // remove after finishing single and two player modes
     this.text = this.add.text(
@@ -66,15 +77,48 @@ export default class MainMenu extends Phaser.Scene {
     );
     this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
 
-    this.freeplayButton = new Button(
-      screenCenterX,
-      screenCenterY + 300,
-      "Freeplay",
-      this,
-      () => {
-        // this.scene.start("Freeplay");
-      },
-      3
+    this.text = this.add.text(
+      screenCenterX - 95,
+      screenCenterY + 330,
+      "on controller",
+      { font: "15px Audiowide" }
     );
+    this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
+    this.text = this.add.text(screenCenterX - 115, screenCenterY + 325, "□ ", {
+      font: "25px Audiowide",
+    });
+    this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
+
+    this.text = this.add.text(
+      screenCenterX - 475,
+      screenCenterY + 130,
+      "X on controller",
+      { font: "15px Audiowide" }
+    );
+    this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
+
+    this.input.gamepad.on(
+      "down",
+      function (pad, button, index) {
+        // text.setText("Using controller, refresh to use keyboard");
+        this.gamepad = pad;
+      },
+      this
+    );
+  }
+  update() {
+    if (this.gamepad) {
+      if (this.gamepad.A) {
+        this.scene.stop("MainMenu");
+        this.scene.stop("SinglePlayer");
+        this.scene.start("SinglePlayer");
+      }
+      if (this.gamepad.X) {
+        console.log("FreePlay");
+        // this.scene.stop("MainMenu");
+        // this.scene.stop("SinglePlayer");
+        // this.scene.start("MainMenu");
+      }
+    }
   }
 }
