@@ -25,8 +25,13 @@ export default class Base extends Phaser.Scene {
     laser.rotation = rocket.rotation + Math.PI / 2;
     laser.setScale(0.01);
     laser.setCollideWorldBounds(false);
-    laser.setVelocityX(1000 * Math.sin(rocket.rotation));
-    laser.setVelocityY(-1000 * Math.cos(rocket.rotation));
+    laser.setVelocityX(
+      1000 * Math.sin(rocket.rotation) + rocket.body.velocity.x
+    );
+    laser.setVelocityY(
+      -1000 * Math.cos(rocket.rotation) + rocket.body.velocity.y
+    );
+    this.laserSound.play();
   }
 
   fireBooster(rocket, strength = 1) {
@@ -102,6 +107,9 @@ export default class Base extends Phaser.Scene {
     if (rocket.teleportTimer < 65) {
       rocket.teleportTimer += 0.07;
     }
+    if (Math.round(rocket.teleportTimer) === 60) {
+      this.teleportReady.play();
+    }
     rocket.score += 0.0008;
     if (rocket.score < 0) {
       rocket.score = 0;
@@ -115,6 +123,72 @@ export default class Base extends Phaser.Scene {
     } else {
       rocket.teleportText.setText(`Teleporter is ready: 100%`);
       rocket.teleportText.setFill(" #00FF00");
+    }
+  }
+
+  updateGamePadControls(rocket, gamepad) {
+    if (gamepad.left) {
+      this.turnLeft(rocket);
+    }
+
+    if (gamepad.leftStick) {
+      // rocket.turnLeft( leftStickSensitivity * -1 * gamepad.leftStick.x * 1.9);
+      if (gamepad.leftStick.angle() != 0) {
+        rocket.rotateValue = 0;
+        rocket.rotation = gamepad.leftStick.angle() + Math.PI / 2;
+      }
+    }
+
+    if (gamepad.B) {
+      // location.reload();
+      this.scene.restart();
+    }
+
+    if (gamepad.A && this.time.now > rocket.laserTimer) {
+      rocket.laserTimer = this.time.now;
+      this.fireLaser(rocket, "laser", this.time.now);
+      // rocket.laserTimer += 250;
+      rocket.laserTimer += 200;
+    }
+
+    // teleport
+    if (gamepad.X) {
+      if (rocket.teleportTimer.toFixed(0) > 60) {
+        this.teleportSound.play();
+        rocket.setPosition(this.rngBase(0, 1500), this.rngBase(0, 1500));
+        rocket.teleportTimer = 0;
+      }
+    }
+
+    if (gamepad.buttons[9].pressed) {
+      //console.log("start button pressed")
+    }
+
+    if (gamepad.R1) {
+      if (this.time.now > this.muteTimer) {
+        this.muteTimer = this.time.now;
+        this.muteTimer = this.time.now + 250;
+        if (this.sound.mute === true) {
+          window.localStorage.setItem("mute", false);
+          this.sound.mute = false;
+          rocket.muteToggle.setText(`Sound: On`);
+        } else {
+          window.localStorage.setItem("mute", true);
+          this.sound.mute = true;
+          rocket.muteToggle.setText(`Sound: Off`);
+        }
+      }
+    }
+
+    //thrust
+    if (gamepad.R2 > 0 || gamepad.Y) {
+      if (gamepad.Y) {
+        this.fireBooster(rocket, 7.5);
+      } else if (gamepad.R2 > 0) {
+        this.fireBooster(rocket, 1.5 * gamepad.R2);
+      }
+    } else {
+      this.default(rocket);
     }
   }
 
