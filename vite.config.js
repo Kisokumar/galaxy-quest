@@ -1,3 +1,3 @@
 export default {
-  base: "/space-quest/",
+  base: "/galaxy-quest/",
 };

@@ -12,6 +12,10 @@ export default class SinglePlayer extends Base {
 
   preload() {
     //preload assets
+    this.load.audio("lasersound", "laser2.mp3");
+    this.load.audio("teleportsound", "teleport.mp3");
+    this.load.audio("teleportReady", "teleportReady.mp3");
+    this.load.audio("starGrab", "starGrab.mp3");
     this.load.image("background", "bg.jpeg");
     this.load.image("rocket", "rocket.png");
     this.load.image("meteor", "meteor.png");
@@ -67,9 +71,33 @@ export default class SinglePlayer extends Base {
       repeat: 0,
     });
 
+    //adding laser sound
+    this.laserSound = this.sound.add("lasersound", { loop: false });
+    this.teleportSound = this.sound.add("teleportsound", { loop: false });
+    this.teleportReady = this.sound.add("teleportReady", { loop: false });
+    this.starGrab = this.sound.add("starGrab", { loop: false });
+
+    // this.sound.mute = false;
+    let localMute = window.localStorage.getItem("mute");
+    if (localMute === "false") {
+      this.sound.mute = false;
+    } else {
+      this.sound.mute = true;
+    }
+
+    this.muteTimer = 0;
+
     // player 1 rocket and stats
     this.rocket1 = this.addRocket("rocket", screenCenterX, screenCenterY);
     this.rocket1.body.setSize(90, 170);
+
+    var muteDisplay = this.sound.mute ? "Off" : "On";
+
+    this.rocket1.muteToggle = this.add
+      .text(1875, 300, `Sound: ${muteDisplay}`, {
+        font: "20px Audiowide",
+      })
+      .setOrigin(1, 0);
 
     this.rocket1.healthText = this.add
       .text(1875, 20, "Health: 100%", {
@@ -117,7 +145,7 @@ export default class SinglePlayer extends Base {
       .setOrigin(1, 0);
 
     this.controls = this.add
-      .text(1875, 300, ``, {
+      .text(1875, 350, ``, {
         // fill: " #00FF00",
         font: "20px Audiowide",
       })
@@ -256,8 +284,10 @@ export default class SinglePlayer extends Base {
         null,
         this
       );
+
       this.physics.add.overlap(star, this.rocket1, () => {
         if (this.started) {
+          this.starGrab.play();
           this.rocket1.Fuel += 20000;
           this.rocket1.score += (star.body.speed + this.rocket1.body.speed) / 2;
           if (this.rocket1.Fuel < 0) {
@@ -302,6 +332,7 @@ export default class SinglePlayer extends Base {
       if (this.rocket1.Health === 0) {
         this.scene.pause();
         this.scene.run("GameOver");
+        console.log("lor");
       }
       if (this.rocket1.Fuel === 0) {
         this.scene.pause();
@@ -314,57 +345,8 @@ export default class SinglePlayer extends Base {
       }
     }
 
-    //
-
     if (this.gamepad) {
-      if (this.gamepad.left) {
-        this.turnLeft(this.rocket1);
-      }
-
-      if (this.gamepad.leftStick) {
-        // this.rocket1.turnLeft( leftStickSensitivity * -1 * this.gamepad.leftStick.x * 1.9);
-        if (this.gamepad.leftStick.angle() != 0) {
-          this.rocket1.rotateValue = 0;
-          this.rocket1.rotation = this.gamepad.leftStick.angle() + Math.PI / 2;
-        }
-      }
-
-      if (this.gamepad.B) {
-        // location.reload();
-        this.scene.restart();
-      }
-
-      if (this.gamepad.A && this.time.now > this.rocket1.laserTimer) {
-        this.rocket1.laserTimer = this.time.now;
-        this.fireLaser(this.rocket1, "laser", this.time.now);
-        this.rocket1.laserTimer += 250;
-      }
-
-      // teleport
-      if (this.gamepad.X) {
-        if (this.rocket1.teleportTimer.toFixed(0) > 60) {
-          this.rocket1.setPosition(rng(0, 1500), rng(0, 1500));
-          this.rocket1.teleportTimer = 0;
-        }
-      }
-
-      if (this.gamepad.buttons[9].pressed) {
-        // console.log(this.gamepad.buttons[9].pressed);
-        // console.log("Asd");
-        this.scene.pause();
-        this.scene.run("Paused");
-      }
-
-      //thrust
-      if (this.gamepad.R2 > 0 || this.gamepad.Y) {
-        if (this.gamepad.Y) {
-          this.fireBooster(this.rocket1, 7.5);
-        } else if (this.gamepad.R2 > 0) {
-          this.fireBooster(this.rocket1, 1.5 * this.gamepad.R2);
-        }
-      } else {
-        this.default(this.rocket1);
-      }
+      this.updateGamePadControls(this.rocket1, this.gamepad);
 
       //   // keyboard
       // } else {
