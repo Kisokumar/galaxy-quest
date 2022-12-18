@@ -151,17 +151,18 @@ button:focus-visible {
 }
 
 #game-display {
-  display: block;
-  border: solid 4px transparent;
-  width: 98%;
-  height: 85%;
-  margin-top:20px
+  width: 97%;
+  height: 97%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 canvas {
   border-radius: 25px;
-  margin: auto
+  /* margin: auto */
 }
+
 
 .compartment {
   text-decoration: none;
