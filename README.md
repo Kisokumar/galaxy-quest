@@ -15,6 +15,34 @@
 
 <p>  Collect stars for fuel and ammo, shoot the meteors and avoid getting hit by them.</p>
 
+<details open="open">
+  <summary><h2 style="display: inline-block"> 📝 Features
+ </h2></summary>
+
+- [ ] Transition to React
+
+- [ ] Transition to Tailwind CSS
+
+- [ ] FreePlay Mode
+
+- [ ] Two Player Mode
+
+- [ ] Contextual game over scene (messages of how you died/ won)
+
+- [x] Code seperation & OOP ( easier to build two player mode and other game features )
+
+- [x] Use localStorage to keep track of users highest score and update it live
+
+- [x] Use localStorage to keep track of users mute sound preference
+
+- [x] Game Music and SFX for all scenes & events
+
+- [x] Shoot Lasers & destroy meteors
+
+- [x] Single Player Mode
+
+</details>
+
 <!-- ---
 ## 👩‍👩‍👧‍👧 Demo
 
