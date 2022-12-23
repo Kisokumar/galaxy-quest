@@ -5,7 +5,7 @@ export default class Button {
       .setOrigin(0.5)
       .setPadding(10)
       .setScale(scale)
-      .setResolution(scale / 1.5)
+      .setResolution(8)
       .setStyle({ backgroundColor: "#111" })
       .setInteractive({ useHandCursor: true })
       .on("pointerdown", () => callback())

@@ -54,13 +54,13 @@ export default class GameOver extends Phaser.Scene {
       3
     );
 
-    this.text = this.add.text(
-      screenCenterX - 120,
-      screenCenterY - 460,
-      "Game message",
-      { font: "20px Audiowide" }
-    );
-    this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
+    // this.text = this.add.text(
+    //   screenCenterX - 120,
+    //   screenCenterY - 460,
+    //   "Game message",
+    //   { font: "20px Audiowide" }
+    // );
+    // this.text.setTint(0xff0fff, 0x9effff, 0xff0fff, 0x9effff);
 
     this.text = this.add.text(
       screenCenterX + 178,

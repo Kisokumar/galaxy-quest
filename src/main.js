@@ -6,6 +6,10 @@ import GameOver from "./scenes/GameOver";
 const width = 1920;
 const height = 1070;
 
+if (window.localStorage.getItem("mute") === null) {
+  window.localStorage.setItem("mute", false);
+}
+
 var config = {
   type: Phaser.AUTO,
   transparent: true,
@@ -33,4 +37,6 @@ var config = {
   },
 };
 
-const game = new Phaser.Game(config);
+document.fonts.load('1rem "Audiowide"').then(() => {
+  const game = new Phaser.Game(config);
+});
