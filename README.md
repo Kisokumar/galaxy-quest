@@ -11,23 +11,35 @@
   </p>
 </p>
 
-## 🚀 About
+<details open="open">
+  <summary><h2 style="display: inline-block">  🚀 About
+ </h2></summary>
 
 <p>  Collect stars for fuel and ammo, shoot the meteors and avoid getting hit by them.</p>
+
+<div align="center">
+
+![](https://github.com/Kisokumar/galaxy-quest/blob/main/demo.gif)
+
+</div>
+</details>
 
 <details open="open">
   <summary><h2 style="display: inline-block"> 📝 Features
  </h2></summary>
 
-- [ ] Transition to React
 
-- [ ] Transition to Tailwind CSS
+- [x] Transition to React
 
-- [ ] FreePlay Mode
+- [x] Transition to Tailwind CSS
+
+- [x] FreePlay Mode
 
 - [ ] Two Player Mode
 
-- [ ] Contextual game over scene (messages of how you died/ won)
+- [x] Contextual game over scene (messages of how you died/ won)
+
+- [ ] Create components(volume slider, controls page, banner)
 
 - [x] Code seperation & OOP ( easier to build two player mode and other game features )
 
@@ -43,11 +55,7 @@
 
 </details>
 
-<!-- ---
-## 👩‍👩‍👧‍👧 Demo
 
-![](https://github.com/kisokumar/galaxy-quest/demo.gif) -->
----
 
 <details open="open">
   <summary><h2 style="display: inline-block"> ⚙️ Installation </h2></summary>
