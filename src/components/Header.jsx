@@ -1,19 +1,19 @@
 import ControlsLeft from "./ControlsLeft";
-import { useState } from "react";
 import ControlsRight from "./ControlsRight";
+import { useState } from "react";
 
 export default function Header() {
-  const [showControls, setShowControls] = useState("true");
+  const [showControls, setShowControls] = useState(true);
 
   function toggleControls() {
-    if (showControls === "true") {
-      setShowControls("false");
+    if (showControls === true) {
+      setShowControls(false);
     } else {
-      setShowControls("true");
+      setShowControls(true);
     }
   }
 
-  if (showControls === "true") {
+  if (showControls === true) {
     return (
       <>
         <>
