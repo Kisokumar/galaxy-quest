@@ -3,11 +3,11 @@ export default function Footer() {
     <footer className="fixed sm:static bottom-0 sm:z-10 w-full shadow-custom ">
       <div className="py-3 px-4  bg-black bg-opacity-10 flex items-center justify-between">
         <span className="text-sm text-gray-300 sm:text-center ">
-          © 2022{" "}
+          © {new Date().getFullYear()}{" "}
           <a
             className="hover:text-black"
             target={"_blank"}
-            href="https://kisokumar.com/"
+            href="https://kisho.uk/"
           >
             Kisho Makes Stuff.
           </a>{" "}
