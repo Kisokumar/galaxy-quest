@@ -3,7 +3,7 @@
   <p align="center">
     A game built with Phaser.JS!
    <br />
-    <a href="https://kisokumar.github.io/galaxy-quest/" target="_blank">Play It!</a>
+    <a href="https://galaxy.kisho.uk/" target="_blank">Play It!</a>
     .
     <a href="https://github.com/Kisokumar/galaxy-quest/issues">Report Bug</a>
     ·
@@ -11,20 +11,15 @@
   </p>
 </p>
 
-<details open="open">
-  <summary><h2 style="display: inline-block">  🚀 About
- </h2></summary>
+<details open>
+ <summary>
+    <h2 style="display: inline-block">🚀 About</h2>
+ </summary>
 
-<p>  Collect stars for fuel and ammo, shoot the meteors and avoid getting hit by them.</p>
-
-<div align="center">
-
-![](https://github.com/Kisokumar/galaxy-quest/blob/main/demo.gif)
-
-</div>
+<p>Collect stars for fuel and ammo, shoot the meteors and avoid getting hit by them.</p>
 </details>
 
-<details open="open">
+<details closed>
   <summary><h2 style="display: inline-block"> 📝 Features
  </h2></summary>
 
@@ -57,7 +52,7 @@
 
 
 
-<details open="open">
+<details closed>
   <summary><h2 style="display: inline-block"> ⚙️ Installation </h2></summary>
 
 Make sure you have `node`, `git` and `npm` installed before beginning.
@@ -73,9 +68,7 @@ npm i
 
 </details>
 
----
-
-<details open="open">
+<details closed>
   <summary><h2 style="display: inline-block"> 💻 Usage (devserver & deployment)
 </h2></summary>
 
