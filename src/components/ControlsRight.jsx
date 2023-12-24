@@ -4,7 +4,7 @@ export default function ControlsRight() {
       <div className="px-4 flex  items-center justify-between font-Audiowide text-black">
         <a
           className="mx-2  hover:text-white hover:bg-gray-700 bg-white rounded-full"
-          href="/galaxy-quest/controls"
+          href="/controls"
         >
           <div className="no-underline px-15 w-max mx-2 my-1 rounded-lg flex min-w-max justify-center items-center">
             <img
@@ -17,7 +17,7 @@ export default function ControlsRight() {
         </a>
         <a
           className="mx-2 flex transition ease-in-out hover:scale-110 duration-300 hover:text-white hover:bg-gray-700 bg-white rounded-full"
-          href="/galaxy-quest/controls"
+          href="/controls"
         >
           <div className="no-underline px-15 w-max mx-2 my-1 rounded-lg flex min-w-max justify-center items-center">
             <img
@@ -30,7 +30,7 @@ export default function ControlsRight() {
         </a>
         <a
           className="mx-2 transition ease-in-out hover:scale-110 duration-300 hover:text-white hover:bg-gray-700 bg-white rounded-full"
-          href="/galaxy-quest/controls"
+          href="/controls"
         >
           <div className="no-underline px-15 w-max mx-2 my-1 rounded-lg flex min-w-max justify-center items-center">
             <img
@@ -44,7 +44,7 @@ export default function ControlsRight() {
         {/* <div className="absolute justify-center items-center right-[68px] top-4">
           <a
             className="mx-2 transition ease-in-out hover:scale-110 duration-300 hover:text-white hover:bg-white hover:text-black bg-indigo-800 border-2 rounded-full h-[30px] flex justify-center items-center text-white"
-            href="/galaxy-quest/controls"
+            href="/controls"
           >
             <p className=" px-2">Controls</p>
           </a>
