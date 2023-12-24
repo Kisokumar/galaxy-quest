@@ -9,7 +9,7 @@ export default function ControlsLeft() {
           <div className="no-underline px-15 w-max mx-2 my-1 rounded-lg flex min-w-max justify-center items-center">
             <img
               className=" border-lg cursor-pointer h-5"
-              src="star.png"
+              src="square.png"
               alt="circle-ps-button"
             />
             <p className=" px-2"> (E) Teleport</p>
