@@ -25,6 +25,8 @@
 
 </details>
 
+https://github.com/Kisokumar/galaxy-quest/assets/97011836/915e8dbd-fcb2-48ee-9fd5-5de55ad327cc
+
 <details open>
  <summary>
     <h2 style="display: inline-block">🚀 About</h2>
