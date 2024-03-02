@@ -5,7 +5,7 @@ export default function Footer() {
         <span className="text-sm text-gray-300 sm:text-center ">
           © {new Date().getFullYear()}{" "}
           <a
-            className="hover:text-black"
+            className=" hover:text-purple-300"
             target={"_blank"}
             href="https://kisho.uk/"
           >
@@ -13,7 +13,7 @@ export default function Footer() {
           </a>{" "}
           All Rights Reserved.
         </span>
-        <div className="flex mt-4 space-x-6 justify-center mt-0">
+        <div className="flex space-x-6 justify-center mt-0">
           <a
             target={"_blank"}
             href="https://github.com/Kisokumar"
